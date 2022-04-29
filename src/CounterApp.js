@@ -37,14 +37,28 @@ const CounterApp = ({ value }) => {
 
    
     
-    const [contador, setContador] = useState( 0 ) 
+    const [contador, setContador] = useState( value ) 
    
 
-    function aumentarContador(){
+    function funcionContador(e){
 
-        setContador (contador + 1)
+ 
+        if(e.target.id == 'aumentar'){
+            setContador (contador + 1)
+        }
+       // console.log(e)
+       else if(e.target.id == 'restar'){
+        setContador (contador - 1)
+       }
+
+       else if(e.target.id == 'reset'){
+        setContador (value)
+       }
+        
         
     }
+
+
 
     return(
     
@@ -53,7 +67,9 @@ const CounterApp = ({ value }) => {
           <h1>CounterApp</h1>
           <h1>{contador}</h1>
 
-          <button onClick={aumentarContador}>+1</button>
+          <button id="aumentar" onClick={funcionContador}>+1</button>
+          <button id="reset" onClick={funcionContador}>reset</button>
+          <button id="restar" onClick={funcionContador}>-1</button>
 
         </>
     
